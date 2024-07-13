@@ -1,9 +1,7 @@
 Author:     Matthew Duffin, Jack Marshall
 Partner:    Matthew Duffin and Jack Marshall
 Date:       23-Feb-2023
-Course:     CS 3500, University of Utah, School of Computing
 GitHub ID:  matthew-duffin
-Repo:       https://github.com/uofu-cs3500-spring23/assignment-six---gui---functioning-spreadsheet-cell-low-buy-high
 Date:       3-Mar-2023(of when submission is ready to be evaluated)
 Solution:   GUI
 Copyright:  CS 3500, Jack Marshall, and Matthew Duffin - This work may not be copied for use in Academic Coursework.
