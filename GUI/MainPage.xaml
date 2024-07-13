@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+/// Author:    Matthew Duffin, Jack Marshall
+/// Partner:   Jack Marshall and Matthew Duffin
+/// Date:      March 3, 2023
+/// Course:    CS 3500, University of Utah, School of Computing
+/// Copyright: CS 3500, Matthew Duffin and Jack Marshall - This work may not 
+///            be copied for use in Academic Coursework.
+///
+/// We, Matthew Duffin and Jack Marshall, certify that we wrote this code from scratch and
+/// did not copy it in part or whole from another source.  All 
+/// references used in the completion of the assignments are cited 
+/// in my README file.
+///
+/// File Contents
+///
+///   This class handles the design layout of our GUI. It also creates certain labels and entries that we manipulate programatically
+///   in the MainPage.xaml.cs file. 
+/// -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GUI.MainPage">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="New" Clicked="FileMenuNewASync" />
+            <MenuFlyoutItem Text="Open" Clicked="FileMenuOpenAsync" />
+            <MenuFlyoutItem Text="Save" Clicked="FileMenuSaveASync" />
+        </MenuBarItem>
+        <MenuBarItem Text="Change Theme">
+            <MenuFlyoutItem Text="White (Default)" Clicked="ThemeASync"/>
+            <MenuFlyoutItem Text="Dark" Clicked="ThemeASync"/>
+            <MenuFlyoutItem Text="RaInBoW" Clicked="ThemeASync"/>
+        </MenuBarItem>
+        <MenuBarItem Text="Help">
+            <MenuFlyoutItem Text="WIKI" Clicked="FileHelpNewAsync"/>
+        </MenuBarItem>
+
+    </ContentPage.MenuBarItems>
+    
+    <ScrollView
+                    Orientation="Vertical">
+
+        <ScrollView
+                    Orientation="Horizontal">
+
+            <!-- See Reference 2 for WPF Grid commands below-->
+            <Grid x:Name="TheGrid" BackgroundColor="LightGrey">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <VerticalStackLayout x:Name="Entire">
+
+                    <!-- A Place to put the currently selected cell "name" and "value" -->
+                    <Border
+                        StrokeThickness="2"
+                        HeightRequest="40">
+                        <HorizontalStackLayout>
+                            <Label x:Name="CellNameLabel" Text="Name: "  TextColor="Black" WidthRequest="100"/>
+                            <Label x:Name="CellName" Text="A1"  TextColor="Black" WidthRequest="100"/>
+                            <Label x:Name="CellContentLabel" TextColor="Black" Text="Content:" WidthRequest="100"/>
+                            <Entry x:Name="CellContent" TextColor="Black" WidthRequest="100" />
+                            <Label x:Name="CellValueLabel" TextColor="Black" Text="Value: " WidthRequest="100"/>
+                            <Label x:Name="CellValue" TextColor="Black"  WidthRequest="100"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <!-- the column headers: A, B, C, ... -->
+                    <HorizontalStackLayout x:Name="TopLabels" />
+
+                    <!--the Grid of Spreadsheet GUI Cells-->
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout x:Name="LeftLabels" ></VerticalStackLayout>
+                        <VerticalStackLayout x:Name="CellStack"  BackgroundColor="LightYellow"></VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+    </ScrollView>
+</ContentPage>

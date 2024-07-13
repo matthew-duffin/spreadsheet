@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GUI</name>
+    </assembly>
+    <members>
+        <member name="T:GUI.MainPage">
+            <summary>
+                Author:    Matthew Duffin, Jack Marshall
+                Partner:   Jack Marshall and Matthew Duffin
+                Date:      March 3, 2023
+                Course:    CS 3500, University of Utah, School of Computing
+                Copyright: CS 3500, Matthew Duffin and Jack Marshall - This work may not
+                be copied for use in Academic Coursework.
+                We, Matthew Duffin and Jack Marshall, certify that we wrote this code from scratch and
+                did not copy it in part or whole from another source.  All
+                references used in the completion of the assignments are cited
+                in my README file.
+                File Contents
+                This class handles the connection between the spreadsheet model with a spreadsheet GUI.
+                It handles all the things that the user can use to create spreadsheets.
+            </summary>
+        </member>
+        <member name="M:GUI.MainPage.#ctor">
+            <summary>
+                MainPage method is responsible for initializing private instance variables
+                and Spreadsheet's cells (such the DrawTopAndLeftLabels and DrawCells).
+            </summary>
+        </member>
+        <member name="M:GUI.MainPage.DrawTopAndLeftLabels">
+            <summary>
+                Draws the top and left labels
+            </summary>
+        </member>
+        <member name="M:GUI.MainPage.DrawCells">
+            <summary>
+                Draws the cells for the spreadsheet by layering HorizontalStackLayouts of Entry objects.
+                Each Entry, the entry's address, and the entry's content (i.e. the cell's content) is initialized
+                and stored for later manipulation and access.
+            </summary>
+        </member>
+        <member name="M:GUI.MainPage.StoreEntry(System.Int32,System.Int32,Microsoft.Maui.Controls.Entry)">
+            <summary>
+                The StoreEntry method has 3 purposes:
+                1) Storing the Entry in a 2D array to access Entry via its spreadsheet location (column, row)
+                2) Storing the Entry in a dictionary to return the cell address (A1, B2, etc) for a given Entry
+                3) Adding event handlers to the Entry to update the spreadsheet when the Entry is changed
+            </summary>
+            <param name="column"></param>
+            <param name="row"></param>
+            <param name="currEntry"></param>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:GUI.MainPage.RowLabel(System.Int32)">
+            <summary>
+                Mimics the horizontal alphabetical layout (A to Z, then AA to AZ, etc)
+                for the topLabels HorizontalStackLayout
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GUI.MainPage.OnEntryCompleted(System.Object,System.EventArgs)">
+            <summary>
+                Called when an Entry is clicked, altered, then user pressed "Enter"
+                Keeps new text entered by user
+                see reference 3
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.MainPage.updateGUI">
+            <summary>
+                Updates our front end GUI to match the backend Spreadsheet.
+                Ensures spreadsheet is showing correct values after each
+                time a cell's contents are altered.
+            </summary>
+        </member>
+        <member name="M:GUI.MainPage.OnEntryFocused(System.Object,System.EventArgs)">
+            <summary>
+                Called when an Entry is clicked on.
+                Functions:
+                1) Cell's old text is stored in case cell not saved (user didn't press enter)
+                2) Highlighting the cell the user clicked on
+                3) Ensuring user is editing an existing spreadsheet (created or opened one)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.MainPage.OnEntryUnFocused(System.Object,System.EventArgs)">
+            <summary>
+                Called when user clicks off of an Entry without pressing "Enter" first
+                Old text value is restored to Entry since its technically "not confirmed"
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.MainPage.FileMenuNewASync(System.Object,System.EventArgs)">
+            <summary>
+                Creates a new spreadsheet when the Window's "New" button is clicked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.MainPage.FileMenuOpenAsync(System.Object,System.EventArgs)">
+            <summary>
+                Opens an existing spreadsheet when the Window's "Open" button is clicked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.MainPage.FileMenuSaveASync(System.Object,System.EventArgs)">
+            <summary>
+                Saves the spreadsheet when the Window's "Save" button is clicked
+                For when save button clicked, save/overwrite file.
+                Also, something where file is saved with different name? (i.e. sheet.sprd, sheet1.sprd, etc).
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.MainPage.ThemeASync(System.Object,System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.MainPage.SaveFile">
+            <summary>
+                This method saves the file for an existing spreadsheet.
+            </summary>
+        </member>
+        <member name="M:GUI.MainPage.NewFile">
+            <summary>
+                When File needs to be cleared, spreadsheet is emptied and all cells and their dependencies are cleared.
+            </summary>
+        </member>
+        <member name="M:GUI.MainPage.entrySelected(System.String,System.String)">
+            <summary>
+                This method displays the name of the cell selected, its contents(editable) and its value at the top of the sheet
+            </summary>
+        </member>
+        <member name="M:GUI.MainPage.FileHelpNewAsync(System.Object,System.EventArgs)">
+            <summary>
+                This method handles when you select the help button in the menu. It will write the message below as a pop up to the
+                user.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.MainPage.normalizer(System.String)">
+            <summary>
+                Our example normalizer that will convert the first character to uppercase values.
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
